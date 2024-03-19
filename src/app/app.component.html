@@ -4,8 +4,8 @@
   <!-- Require an extra div with large width due to overflow-x and overflow-y interactions-->
   <div
     #scrollcontainer
-    (scroll)="updateOverflow(scrollcontainer)"
-    class="scrollbar-none h-fit w-96 overflow-y-scroll"
+    (scroll)="updateOverflow()"
+    class="scrollbar-none h-auto w-96 overflow-y-scroll"
   >
     <div class="flex flex-col gap-2 overflow-x-visible">
       <app-sidebar-button
@@ -15,9 +15,7 @@
     </div>
   </div>
 
-  <div
-    class="z-10 mb-0 mt-auto flex w-24 shrink flex-col justify-end overflow-visible bg-gray-darkest"
-  >
+  <div class="z-10 mb-0 mt-auto flex w-24 shrink flex-col justify-end">
     <hr class="{{ this.dividerStyleString }}" />
     <app-sidebar-button iconName="lucideSettings" tooltipText="Settings" />
     <app-sidebar-button

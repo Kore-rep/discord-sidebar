@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, type ElementRef, ViewChild } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { NgIconComponent, provideIcons } from '@ng-icons/core';
 import {
@@ -29,6 +29,7 @@ import { NgFor } from '@angular/common';
   templateUrl: './app.component.html',
 })
 export class AppComponent {
+  @ViewChild('scrollcontainer') scrollContainer!: ElementRef;
   private readonly possibleButtons: string[] = [
     'lucideAperture',
     'lucideBookOpen',
@@ -44,6 +45,7 @@ export class AppComponent {
         Math.floor(Math.random() * this.possibleButtons.length)
       ],
     );
+    this.updateOverflow();
   };
 
   dividerStyle = {
@@ -63,11 +65,12 @@ export class AppComponent {
 
   dividerStyleString: string = this.styleToString();
 
-  updateOverflow(element: HTMLDivElement): void {
+  updateOverflow(): void {
+    const element: HTMLDivElement = this.scrollContainer.nativeElement;
     if (element.clientHeight < element.scrollHeight) {
       if (element.scrollHeight - element.scrollTop - element.clientHeight < 1) {
         this.dividerStyle['b-color'] = 'border-gray-light';
-      } else if (this.dividerStyle['b-color'] !== 'border-accent-purple') {
+      } else {
         this.dividerStyle['b-color'] = 'border-accent-purple';
       }
     } else {
