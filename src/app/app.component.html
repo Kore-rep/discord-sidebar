@@ -1,7 +1,12 @@
 <div
   class="fixed left-0 top-0 z-0 flex h-screen w-24 flex-col bg-gray-darkest pt-4 shadow-xl"
 >
-  <div class="scrollbar-none h-full w-96 overflow-y-scroll">
+  <!-- Require an extra div with large width due to overflow-x and overflow-y interactions-->
+  <div
+    #scrollcontainer
+    (scroll)="updateOverflow(scrollcontainer)"
+    class="scrollbar-none h-fit w-96 overflow-y-scroll"
+  >
     <div class="flex flex-col gap-2 overflow-x-visible">
       <app-sidebar-button
         *ngFor="let button of buttonList"
@@ -11,9 +16,9 @@
   </div>
 
   <div
-    class="fixed bottom-0 z-10 flex w-24 flex-col overflow-visible bg-gray-darkest"
+    class="z-10 mb-0 mt-auto flex w-24 shrink flex-col justify-end overflow-visible bg-gray-darkest"
   >
-    <hr class="w-auto" />
+    <hr class="{{ this.dividerStyleString }}" />
     <app-sidebar-button iconName="lucideSettings" tooltipText="Settings" />
     <app-sidebar-button
       iconName="lucidePlus"

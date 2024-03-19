@@ -46,5 +46,35 @@ export class AppComponent {
     );
   };
 
+  dividerStyle = {
+    w: 'w-auto',
+    border: 'border-2',
+    'b-color': 'border-gray-light',
+  };
+
+  styleToString = (): string => {
+    let temp = '';
+    for (const [, v] of Object.entries(this.dividerStyle)) {
+      temp += ' ';
+      temp += v;
+    }
+    return temp;
+  };
+
+  dividerStyleString: string = this.styleToString();
+
+  updateOverflow(element: HTMLDivElement): void {
+    if (element.clientHeight < element.scrollHeight) {
+      if (element.scrollHeight - element.scrollTop - element.clientHeight < 1) {
+        this.dividerStyle['b-color'] = 'border-gray-light';
+      } else if (this.dividerStyle['b-color'] !== 'border-accent-purple') {
+        this.dividerStyle['b-color'] = 'border-accent-purple';
+      }
+    } else {
+      this.dividerStyle['b-color'] = 'border-gray-light';
+    }
+    this.dividerStyleString = this.styleToString();
+  }
+
   title = 'discord-sidebar';
 }
