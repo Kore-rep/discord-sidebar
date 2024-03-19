@@ -25,6 +25,8 @@ import {
   templateUrl: './sidebar-button.component.html',
 })
 export class SidebarButtonComponent {
+  @Input() callbackFunction: () => void = () => {};
+
   @Input() iconName!: string;
   @Input() tooltipText: string = 'tooltip!';
 }

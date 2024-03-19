@@ -10,11 +10,12 @@ import {
   lucidePlus,
 } from '@ng-icons/lucide';
 import { SidebarButtonComponent } from './sidebar-button/sidebar-button.component';
+import { NgFor } from '@angular/common';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, NgIconComponent, SidebarButtonComponent],
+  imports: [RouterOutlet, NgIconComponent, SidebarButtonComponent, NgFor],
   providers: [
     provideIcons({
       lucideAperture,
@@ -28,5 +29,22 @@ import { SidebarButtonComponent } from './sidebar-button/sidebar-button.componen
   templateUrl: './app.component.html',
 })
 export class AppComponent {
+  private readonly possibleButtons: string[] = [
+    'lucideAperture',
+    'lucideBookOpen',
+    'lucideCalendarDays',
+    'lucideActivity',
+  ];
+
+  readonly buttonList: string[] = [];
+
+  callbackFunc = (): void => {
+    this.buttonList.push(
+      this.possibleButtons[
+        Math.floor(Math.random() * this.possibleButtons.length)
+      ],
+    );
+  };
+
   title = 'discord-sidebar';
 }
