@@ -1,8 +1,17 @@
-<button
-  class="bg-gray-dark rounded-[40px] w-20 h-20 ml-2 mr-2 group transition-border duration-150 ease-linear hover:rounded-lg"
+<div
+  class="relative mx-2 mb-2 mt-2 flex min-w-fit flex-row items-center justify-between gap-2"
 >
-  <ng-icon
-    name="{{ iconName }}"
-    class="text-green-600 hover:text-white transition-text ease-linear shadow-xl text-lg"
-  ></ng-icon>
-</button>
+  <div
+    class="transition-border group peer relative flex h-20 w-20 items-center justify-center rounded-[44px] bg-gray-dark duration-150 ease-linear hover:rounded-3xl"
+  >
+    <ng-icon
+      name="{{ iconName }}"
+      class="text-green-600 shadow-xl transition-all duration-150 ease-linear group-hover:text-white"
+      size="30"
+    ></ng-icon>
+  </div>
+  <span
+    class="left-24 z-10 m-2 mr-0 h-10 min-w-max origin-left scale-0 rounded-md bg-gray-dark p-2 text-xs font-bold text-white shadow-md transition-all duration-150 peer-hover:scale-100"
+    >{{ tooltipText }}</span
+  >
+</div>

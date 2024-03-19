@@ -26,4 +26,5 @@ import {
 })
 export class SidebarButtonComponent {
   @Input() iconName!: string;
+  @Input() tooltipText: string = 'tooltip!';
 }

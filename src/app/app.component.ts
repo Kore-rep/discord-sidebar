@@ -7,6 +7,7 @@ import {
   lucideCalendarDays,
   lucideActivity,
   lucideSettings,
+  lucidePlus,
 } from '@ng-icons/lucide';
 import { SidebarButtonComponent } from './sidebar-button/sidebar-button.component';
 
@@ -21,6 +22,7 @@ import { SidebarButtonComponent } from './sidebar-button/sidebar-button.componen
       lucideCalendarDays,
       lucideActivity,
       lucideSettings,
+      lucidePlus,
     }),
   ],
   templateUrl: './app.component.html',
